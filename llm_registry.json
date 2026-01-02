@@ -1,0 +1,931 @@
+{
+  "$schema": "./schema/llm_registry_schema.json",
+  "version": "1.0.0",
+  "updated_at": "2026-01-01",
+  "description": "Registry of LLM providers, their API configurations, and supported models.",
+  "providers": [
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "description": "The AI research and deployment company behind GPT models.",
+      "website": "https://openai.com",
+      "docs_url": "https://platform.openai.com/docs/api-reference",
+      "api_config": {
+        "protocol": "rest",
+        "protocol_format": "openai",
+        "base_url": "https://api.openai.com/v1",
+        "auth": {
+          "type": "api_key",
+          "header_key": "Authorization",
+          "token_prefix": "Bearer",
+          "env_var_suggestion": "OPENAI_API_KEY"
+        },
+        "endpoints": {
+          "chat": {
+            "path": "/chat/completions",
+            "method": "POST",
+            "supports_stream": true
+          },
+          "embeddings": {
+            "path": "/embeddings",
+            "method": "POST"
+          },
+          "models": {
+            "path": "/models",
+            "method": "GET"
+          }
+        }
+      },
+      "models": [
+        {
+          "id": "gpt-5.2",
+          "name": "GPT-5.2",
+          "type": "chat",
+          "description": "The best model for coding and agentic tasks across industries.",
+          "features": [
+            "coding",
+            "agentic"
+          ]
+        },
+        {
+          "id": "gpt-5.2-pro",
+          "name": "GPT-5.2 Pro",
+          "type": "chat",
+          "description": "Version of GPT-5.2 that produces smarter and more precise responses.",
+          "features": [
+            "coding",
+            "agentic",
+            "precise"
+          ]
+        },
+        {
+          "id": "gpt-5",
+          "name": "GPT-5",
+          "type": "chat",
+          "description": "Previous intelligent reasoning model for coding and agentic tasks with configurable reasoning effort.",
+          "features": [
+            "reasoning",
+            "coding",
+            "agentic"
+          ]
+        },
+        {
+          "id": "gpt-5-mini",
+          "name": "GPT-5 Mini",
+          "type": "chat",
+          "description": "A faster, cost-efficient version of GPT-5 for well-defined tasks.",
+          "features": [
+            "fast",
+            "cost-efficient"
+          ]
+        },
+        {
+          "id": "gpt-5-nano",
+          "name": "GPT-5 Nano",
+          "type": "chat",
+          "description": "Fastest, most cost-efficient version of GPT-5.",
+          "features": [
+            "fastest",
+            "cost-efficient"
+          ]
+        },
+        {
+          "id": "gpt-4.1",
+          "name": "GPT-4.1",
+          "type": "chat",
+          "description": "Smartest non-reasoning model.",
+          "features": [
+            "non-reasoning"
+          ]
+        },
+        {
+          "id": "gpt-oss-120b",
+          "name": "GPT-OSS 120B",
+          "type": "chat",
+          "description": "Most powerful open-weight model, fits into an H100 GPU.",
+          "features": [
+            "open-weight"
+          ]
+        },
+        {
+          "id": "gpt-oss-20b",
+          "name": "GPT-OSS 20B",
+          "type": "chat",
+          "description": "Medium-sized open-weight model for low latency.",
+          "features": [
+            "open-weight",
+            "low-latency"
+          ]
+        },
+        {
+          "id": "o3-deep-research",
+          "name": "o3 Deep Research",
+          "type": "chat",
+          "description": "Our most powerful deep research model.",
+          "features": [
+            "research"
+          ]
+        },
+        {
+          "id": "o4-mini-deep-research",
+          "name": "o4 Mini Deep Research",
+          "type": "chat",
+          "description": "Faster, more affordable deep research model.",
+          "features": [
+            "research",
+            "fast"
+          ]
+        },
+        {
+          "id": "sora-2",
+          "name": "Sora 2",
+          "type": "video",
+          "description": "Flagship video generation with synced audio.",
+          "features": [
+            "video",
+            "audio"
+          ]
+        },
+        {
+          "id": "sora-2-pro",
+          "name": "Sora 2 Pro",
+          "type": "video",
+          "description": "Most advanced synced-audio video generation.",
+          "features": [
+            "video",
+            "audio",
+            "advanced"
+          ]
+        },
+        {
+          "id": "gpt-image-1.5",
+          "name": "GPT Image 1.5",
+          "type": "image",
+          "description": "State-of-the-art image generation model.",
+          "features": [
+            "image-generation"
+          ]
+        },
+        {
+          "id": "gpt-realtime",
+          "name": "GPT Realtime",
+          "type": "chat",
+          "description": "Model capable of realtime text and audio inputs and outputs.",
+          "features": [
+            "realtime",
+            "audio",
+            "text"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zhipuai",
+      "name": "Zhipu AI",
+      "description": "Zhipu AI (智谱AI) provides the GLM series of models, known for complex reasoning and long context capabilities.",
+      "website": "https://open.bigmodel.cn/",
+      "docs_url": "https://open.bigmodel.cn/dev/api/normal-model/glm-4",
+      "api_config": {
+        "protocol": "rest",
+        "protocol_format": "openai",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "auth": {
+          "type": "api_key",
+          "header_key": "Authorization",
+          "token_prefix": "Bearer",
+          "env_var_suggestion": "ZHIPUAI_API_KEY",
+          "instructions": "Use the API Key (format: {id}.{secret}) directly as the Bearer token. Alternatively, you can generate a JWT token using the key."
+        },
+        "endpoints": {
+          "chat": {
+            "path": "/chat/completions",
+            "docs_url": "https://open.bigmodel.cn/dev/api/normal-model/glm-4#chat-completions",
+            "description": "Synchronous call, wait for the model to complete execution and return the final result or use SSE call.",
+            "method": "POST",
+            "request_content_type": "application/json",
+            "response_content_type": [
+              "application/json",
+              "text/event-stream"
+            ],
+            "character_encoding": "UTF-8",
+            "supports_stream": true,
+            "request_parameters": {
+              "model": {
+                "type": "string",
+                "format": "string",
+                "required": true,
+                "description": "The ID of the model to use (e.g., 'glm-4-plus')."
+              },
+              "messages": {
+                "type": "array",
+                "format": "array",
+                "required": true,
+                "description": "A list of messages comprising the conversation so far.",
+                "items": {
+                  "type": "object",
+                  "format": "object",
+                  "properties": {
+                    "role": {
+                      "type": "string",
+                      "format": "string",
+                      "enum": [
+                        "system",
+                        "user",
+                        "assistant",
+                        "tool"
+                      ],
+                      "description": "The role of the messages author."
+                    },
+                    "content": {
+                      "type": "string",
+                      "format": "string",
+                      "description": "The contents of the message."
+                    },
+                    "tool_calls": {
+                      "type": "array",
+                      "format": "array",
+                      "description": "The tool calls generated by the model, such as function calls."
+                    }
+                  },
+                  "required": [
+                    "role",
+                    "content"
+                  ]
+                }
+              },
+              "request_id": {
+                "type": "string",
+                "format": "string",
+                "required": false,
+                "description": "Unique identifier for the request, generated by the client."
+              },
+              "do_sample": {
+                "type": "boolean",
+                "format": "boolean",
+                "required": false,
+                "default": true,
+                "description": "Whether to use sampling; use false for deterministic results."
+              },
+              "stream": {
+                "type": "boolean",
+                "format": "boolean",
+                "required": false,
+                "default": false,
+                "description": "If true, partial message deltas will be sent as data-only server-sent events."
+              },
+              "temperature": {
+                "type": "number",
+                "format": "float",
+                "required": false,
+                "default": 0.95,
+                "minimum": 0.0,
+                "maximum": 1.0,
+                "description": "Sampling temperature. Higher values mean more random outputs."
+              },
+              "top_p": {
+                "type": "number",
+                "format": "float",
+                "required": false,
+                "default": 0.7,
+                "minimum": 0.0,
+                "maximum": 1.0,
+                "description": "Nucleus sampling. Model considers the results of the tokens with top_p probability mass."
+              },
+              "max_tokens": {
+                "type": "integer",
+                "format": "int32",
+                "required": false,
+                "description": "The maximum number of tokens to generate in the completion."
+              },
+              "stop": {
+                "type": "array",
+                "format": "array",
+                "required": false,
+                "items": {
+                  "type": "string",
+                  "format": "string"
+                },
+                "description": "Up to 4 sequences where the API will stop generating further tokens."
+              },
+              "tools": {
+                "type": "array",
+                "format": "array",
+                "required": false,
+                "description": "A list of tools the model may call. Currently, only functions are supported as a tool.",
+                "items": {
+                  "type": "object",
+                  "format": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "string",
+                      "enum": [
+                        "function",
+                        "retrieval",
+                        "web_search"
+                      ],
+                      "description": "The type of the tool."
+                    },
+                    "function": {
+                      "type": "object",
+                      "format": "object",
+                      "description": "Function definition."
+                    },
+                    "retrieval": {
+                      "type": "object",
+                      "format": "object",
+                      "description": "Retrieval tool configuration."
+                    },
+                    "web_search": {
+                      "type": "object",
+                      "format": "object",
+                      "description": "Web search tool configuration."
+                    }
+                  }
+                }
+              },
+              "tool_choice": {
+                "type": "string",
+                "format": "string",
+                "required": false,
+                "default": "auto",
+                "enum": [
+                  "auto",
+                  "none"
+                ],
+                "description": "Controls which (if any) tool is called by the model."
+              },
+              "user_id": {
+                "type": "string",
+                "format": "string",
+                "required": false,
+                "description": "A unique identifier representing your end-user."
+              }
+            },
+            "response_parameters": {
+              "id": {
+                "type": "string",
+                "format": "string",
+                "description": "A unique identifier for the chat completion."
+              },
+              "created": {
+                "type": "integer",
+                "format": "int64",
+                "description": "The Unix timestamp (in seconds) of when the chat completion was created."
+              },
+              "model": {
+                "type": "string",
+                "format": "string",
+                "description": "The model used for the chat completion."
+              },
+              "choices": {
+                "type": "array",
+                "format": "array",
+                "description": "A list of chat completion choices.",
+                "items": {
+                  "type": "object",
+                  "format": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "The index of the choice in the list of choices."
+                    },
+                    "message": {
+                      "type": "object",
+                      "format": "object",
+                      "description": "The chat completion message generated by the model.",
+                      "properties": {
+                        "role": {
+                          "type": "string",
+                          "format": "string",
+                          "description": "The role of the author of this message."
+                        },
+                        "content": {
+                          "type": "string",
+                          "format": "string",
+                          "description": "The contents of the message."
+                        },
+                        "tool_calls": {
+                          "type": "array",
+                          "format": "array",
+                          "description": "The tool calls generated by the model, such as function calls."
+                        }
+                      }
+                    },
+                    "finish_reason": {
+                      "type": "string",
+                      "format": "string",
+                      "description": "The reason the model stopped generating tokens."
+                    }
+                  }
+                }
+              },
+              "usage": {
+                "type": "object",
+                "format": "object",
+                "description": "Usage statistics for the completion request.",
+                "properties": {
+                  "prompt_tokens": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Number of tokens in the prompt."
+                  },
+                  "completion_tokens": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Number of tokens in the generated completion."
+                  },
+                  "total_tokens": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Total number of tokens used in the request (prompt + completion)."
+                  }
+                }
+              }
+            }
+          },
+          "embeddings": {
+            "path": "/embeddings",
+            "method": "POST"
+          }
+        },
+        "error_codes": [
+          {
+            "code": "200",
+            "description": "Success"
+          },
+          {
+            "code": "400",
+            "description": "Invalid parameter or request format"
+          },
+          {
+            "code": "401",
+            "description": "Authentication failed or token expired"
+          },
+          {
+            "code": "404",
+            "description": "Resource not found (model, fine-tuning task)"
+          },
+          {
+            "code": "429",
+            "description": "Rate limit exceeded or insufficient quota"
+          },
+          {
+            "code": "434",
+            "description": "No API permission"
+          },
+          {
+            "code": "435",
+            "description": "File size exceeds limit"
+          },
+          {
+            "code": "500",
+            "description": "Internal server error"
+          },
+          {
+            "code": "1000",
+            "description": "Authentication failed"
+          },
+          {
+            "code": "1001",
+            "description": "Missing Authentication header"
+          },
+          {
+            "code": "1002",
+            "description": "Invalid Authentication Token"
+          },
+          {
+            "code": "1003",
+            "description": "Authentication Token expired"
+          },
+          {
+            "code": "1004",
+            "description": "Authentication Token verification failed"
+          },
+          {
+            "code": "1100",
+            "description": "Account read/write error"
+          },
+          {
+            "code": "1110",
+            "description": "Account inactive"
+          },
+          {
+            "code": "1111",
+            "description": "Account does not exist"
+          },
+          {
+            "code": "1112",
+            "description": "Account locked"
+          },
+          {
+            "code": "1113",
+            "description": "Account arrears"
+          },
+          {
+            "code": "1120",
+            "description": "Account access failed"
+          },
+          {
+            "code": "1121",
+            "description": "Account locked due to violation"
+          },
+          {
+            "code": "1200",
+            "description": "API call error"
+          },
+          {
+            "code": "1210",
+            "description": "Invalid API parameters"
+          },
+          {
+            "code": "1211",
+            "description": "Model does not exist"
+          },
+          {
+            "code": "1212",
+            "description": "Method not supported by current model"
+          },
+          {
+            "code": "1213",
+            "description": "Missing required parameter"
+          },
+          {
+            "code": "1214",
+            "description": "Invalid parameter value"
+          },
+          {
+            "code": "1215",
+            "description": "Conflicting parameters"
+          },
+          {
+            "code": "1220",
+            "description": "No permission to access API"
+          },
+          {
+            "code": "1221",
+            "description": "API deprecated"
+          },
+          {
+            "code": "1222",
+            "description": "API does not exist"
+          },
+          {
+            "code": "1230",
+            "description": "API workflow error"
+          },
+          {
+            "code": "1231",
+            "description": "Duplicate request ID"
+          },
+          {
+            "code": "1234",
+            "description": "Network error"
+          },
+          {
+            "code": "1300",
+            "description": "Blocked by policy"
+          },
+          {
+            "code": "1301",
+            "description": "Sensitive content detected"
+          },
+          {
+            "code": "1302",
+            "description": "High concurrency limit exceeded"
+          },
+          {
+            "code": "1303",
+            "description": "High frequency limit exceeded"
+          },
+          {
+            "code": "1304",
+            "description": "Daily usage limit reached"
+          },
+          {
+            "code": "1305",
+            "description": "Traffic limit triggered"
+          },
+          {
+            "code": "1308",
+            "description": "Usage cap reached"
+          },
+          {
+            "code": "1309",
+            "description": "Plan expired"
+          }
+        ]
+      },
+      "pricing_currency": "CNY",
+      "models": [
+        {
+          "id": "glm-4-plus",
+          "name": "GLM-4 Plus",
+          "type": "chat",
+          "description": "High-Intelligence Flagship: Comprehensive performance enhancement with significantly improved capabilities for long texts and complex tasks.",
+          "context_window": 128000,
+          "max_output_tokens": 4096,
+          "features": [
+            "tool_calling",
+            "web_search",
+            "retrieval",
+            "function_calling"
+          ]
+        },
+        {
+          "id": "glm-4-air-250414",
+          "name": "GLM-4 Air (250414)",
+          "type": "chat",
+          "description": "High Cost-Effectiveness: The model that offers the best balance between reasoning capabilities and price.",
+          "context_window": 128000,
+          "max_output_tokens": 16384,
+          "features": [
+            "tool_calling",
+            "web_search",
+            "function_calling"
+          ]
+        },
+        {
+          "id": "glm-4-long",
+          "name": "GLM-4 Long",
+          "type": "chat",
+          "description": "Ultra-Long Input: Specifically designed for handling extremely long texts and memory-intensive tasks.",
+          "context_window": 1000000,
+          "max_output_tokens": 4096,
+          "features": [
+            "tool_calling",
+            "web_search",
+            "function_calling"
+          ]
+        },
+        {
+          "id": "glm-4-airx",
+          "name": "GLM-4 AirX",
+          "type": "chat",
+          "description": "Ultra-Fast Inference: Featuring extremely fast reasoning speed and powerful reasoning performance.",
+          "context_window": 8192,
+          "max_output_tokens": 4096,
+          "features": [
+            "tool_calling",
+            "function_calling"
+          ]
+        },
+        {
+          "id": "glm-4-flashx-250414",
+          "name": "GLM-4 FlashX (250414)",
+          "type": "chat",
+          "description": "High-Speed, Low-Cost: Flash-enhanced version, featuring ultra-fast inference speed and higher concurrency guarantees.",
+          "context_window": 128000,
+          "max_output_tokens": 16384,
+          "features": [
+            "function_calling"
+          ]
+        },
+        {
+          "id": "glm-4-flash-250414",
+          "name": "GLM-4 Flash (250414)",
+          "type": "chat",
+          "description": "Free Model: Zero-cost access to the language model.",
+          "context_window": 128000,
+          "max_output_tokens": 16384,
+          "features": [
+            "function_calling",
+            "free"
+          ]
+        },
+        {
+          "id": "glm-z1-air",
+          "name": "GLM-Z1 Air",
+          "type": "reasoning",
+          "description": "Reasoning Model: Equipped with strong reasoning capabilities, suitable for tasks requiring deep reasoning.",
+          "context_window": 128000,
+          "max_output_tokens": 32768,
+          "features": [
+            "reasoning"
+          ]
+        },
+        {
+          "id": "glm-z1-airx",
+          "name": "GLM-Z1 AirX",
+          "type": "reasoning",
+          "description": "Ultra-Fast Inference: Featuring extremely fast inference speed (up to 200 tokens/s).",
+          "context_window": 32768,
+          "max_output_tokens": 30720,
+          "features": [
+            "reasoning",
+            "fast"
+          ]
+        },
+        {
+          "id": "glm-z1-flashx",
+          "name": "GLM-Z1 FlashX",
+          "type": "reasoning",
+          "description": "High-Speed, Low-Cost: Flash-enhanced version with ultra-fast inference speed and even greater concurrency guarantees.",
+          "context_window": 128000,
+          "max_output_tokens": 32768,
+          "features": [
+            "reasoning"
+          ]
+        },
+        {
+          "id": "glm-z1-flash",
+          "name": "GLM-Z1 Flash",
+          "type": "reasoning",
+          "description": "Free Inference: Free inference API, enabling zero-cost access to large reasoning models.",
+          "context_window": 128000,
+          "max_output_tokens": 32768,
+          "features": [
+            "reasoning",
+            "free"
+          ]
+        },
+        {
+          "id": "glm-4.1v-thinking-flash",
+          "name": "GLM-4.1V Thinking Flash",
+          "type": "chat",
+          "description": "Visual Reasoning: The strongest visual reasoning model in the 10B size class.",
+          "context_window": 65536,
+          "features": [
+            "vision",
+            "reasoning"
+          ]
+        },
+        {
+          "id": "glm-4v-plus-0111",
+          "name": "GLM-4V Plus (0111)",
+          "type": "chat",
+          "description": "Image/Video Understanding: Outstanding multimodal understanding, processing up to 5 images or 2h video.",
+          "context_window": 16384,
+          "features": [
+            "vision",
+            "video-understanding"
+          ]
+        },
+        {
+          "id": "glm-4v-flash",
+          "name": "GLM-4V Flash",
+          "type": "chat",
+          "description": "Free Model: Supports single-image understanding for basic image analysis.",
+          "context_window": 4096,
+          "features": [
+            "vision",
+            "free"
+          ]
+        },
+        {
+          "id": "cogvideox-3",
+          "name": "CogVideoX-3",
+          "type": "video",
+          "description": "Video Generation: Significant improvements in image quality, stability, and physical realism simulation.",
+          "features": [
+            "video-generation"
+          ]
+        },
+        {
+          "id": "cogvideox-2",
+          "name": "CogVideoX-2",
+          "type": "video",
+          "description": "Video Generation: Easily create videos using text or images as input.",
+          "features": [
+            "video-generation"
+          ]
+        },
+        {
+          "id": "cogvideox-flash",
+          "name": "CogVideoX Flash",
+          "type": "video",
+          "description": "Video Generation: A free and user-friendly video generation model.",
+          "features": [
+            "video-generation",
+            "free"
+          ]
+        },
+        {
+          "id": "vidu-q1",
+          "name": "Vidu Q1",
+          "type": "video",
+          "description": "Video Generation: Focused on high-quality video creation for film, ads, and anime.",
+          "features": [
+            "video-generation"
+          ]
+        },
+        {
+          "id": "vidu-2",
+          "name": "Vidu 2",
+          "type": "video",
+          "description": "Video Generation: Balanced speed and quality, focusing on image-to-video and start/end frame functions.",
+          "features": [
+            "video-generation"
+          ]
+        },
+        {
+          "id": "cogview-4",
+          "name": "CogView-4",
+          "type": "image",
+          "description": "Image Generation: Strong complex semantic alignment, supports any length Chinese/English input.",
+          "features": [
+            "image-generation"
+          ]
+        },
+        {
+          "id": "cogview-3-flash",
+          "name": "CogView-3 Flash",
+          "type": "image",
+          "description": "Free Model: A free image generation model.",
+          "features": [
+            "image-generation",
+            "free"
+          ]
+        },
+        {
+          "id": "glm-realtime",
+          "name": "GLM-Realtime",
+          "type": "realtime",
+          "description": "Real-Time Video Call: Capable of real-time reasoning across text, audio, and video.",
+          "context_window": 8192,
+          "max_output_tokens": 1024,
+          "features": [
+            "realtime",
+            "audio",
+            "video"
+          ]
+        },
+        {
+          "id": "glm-4-voice",
+          "name": "GLM-4 Voice",
+          "type": "audio",
+          "description": "End-to-End Speech Model: Directly understand and generate Chinese/English speech.",
+          "context_window": 8192,
+          "max_output_tokens": 4096,
+          "features": [
+            "audio"
+          ]
+        },
+        {
+          "id": "charglm-4",
+          "name": "CharGLM-4",
+          "type": "chat",
+          "description": "Humanlike Model: Suitable for emotional companionship and virtual characters.",
+          "context_window": 8192,
+          "max_output_tokens": 4096,
+          "features": [
+            "roleplay"
+          ]
+        },
+        {
+          "id": "emohaa",
+          "name": "Emohaa",
+          "type": "chat",
+          "description": "Psychological Model: Professional counseling capabilities for emotional support.",
+          "context_window": 8192,
+          "max_output_tokens": 4096,
+          "features": [
+            "counseling"
+          ]
+        },
+        {
+          "id": "codegeex-4",
+          "name": "CodeGeeX-4",
+          "type": "chat",
+          "description": "Code Model: Suitable for code auto-completion tasks.",
+          "context_window": 128000,
+          "max_output_tokens": 32768,
+          "features": [
+            "coding"
+          ]
+        },
+        {
+          "id": "rerank",
+          "name": "Rerank",
+          "type": "rerank",
+          "description": "Reranking Model: Computes score values between texts and reranks retrieval results.",
+          "context_window": 4096,
+          "features": [
+            "rerank"
+          ]
+        },
+        {
+          "id": "embedding-3",
+          "name": "Embedding-3",
+          "type": "embedding",
+          "description": "Latest text embedding model with improved performance.",
+          "max_input_tokens": 8192,
+          "features": [
+            "embedding"
+          ]
+        },
+        {
+          "id": "embedding-2",
+          "name": "Embedding-2",
+          "type": "embedding",
+          "description": "General text embedding model.",
+          "max_input_tokens": 8192,
+          "features": [
+            "embedding"
+          ]
+        }
+      ]
+    }
+  ]
+}

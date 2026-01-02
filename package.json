@@ -1,0 +1,12 @@
+{
+  "name": "llm-list-js",
+  "version": "1.0.0",
+  "description": "JavaScript SDK for accessing LLM List Registry data",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": ["llm", "registry", "sdk"],
+  "author": "",
+  "license": "ISC"
+}
