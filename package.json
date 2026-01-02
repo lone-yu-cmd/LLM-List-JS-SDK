@@ -4,7 +4,8 @@
   "description": "JavaScript SDK for accessing LLM List Registry data",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "sync": "node scripts/sync_registry.js"
   },
   "keywords": ["llm", "registry", "sdk"],
   "author": "",
