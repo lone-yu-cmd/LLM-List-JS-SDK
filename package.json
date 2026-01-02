@@ -8,6 +8,11 @@
     "sync": "node scripts/sync_registry.js"
   },
   "keywords": ["llm", "registry", "sdk"],
+  "browser": {
+    "fs": false,
+    "path": false,
+    "https": false
+  },
   "author": "",
   "license": "ISC"
 }
